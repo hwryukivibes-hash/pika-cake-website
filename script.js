@@ -1,3 +1,12 @@
+// Mode gelap / terang
+const themeBtn = document.getElementById('themeToggle');
+themeBtn.addEventListener('click', () => {
+  const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = next;
+  try { localStorage.setItem('pikaTheme', next); } catch {}
+  document.querySelector('meta[name=theme-color]').setAttribute('content', next === 'dark' ? '#1b1218' : '#ffe4ef');
+});
+
 const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.getElementById('navLinks');
 menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
@@ -108,3 +117,20 @@ $('cartOrder').addEventListener('click', () => {
   window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
 });
 renderCart();
+
+// Foto asli menu: taruh file di assets/photos/<nama-menu>.jpg (lihat assets/photos/README.txt).
+// Kalau filenya ada, otomatis dipakai menggantikan ilustrasi.
+document.querySelectorAll('#cakeGrid .cake-card').forEach(card => {
+  const img = card.querySelector('.cake-img img');
+  if (!img.getAttribute('src').endsWith('.svg')) return;
+  const slug = img.getAttribute('src').split('/').pop().replace('.svg', '');
+  const name = card.querySelector('h3').textContent;
+  const exts = ['jpg', 'jpeg', 'png', 'webp'];
+  (function tryNext(i) {
+    if (i >= exts.length) return;
+    const src = `assets/photos/${slug}.${exts[i]}`, probe = new Image();
+    probe.onload = () => { img.src = src; menuData[name].img = src; renderCart(); };
+    probe.onerror = () => tryNext(i + 1);
+    probe.src = src;
+  })(0);
+});

@@ -24,3 +24,6 @@ Kalau autoplay diblokir, tekan tombol play di kiri bawah. File musik lokal ada d
 
 Catatan foto:
 Foto Pika ada di bagian About (assets/pika-portrait.jpg).
+
+Foto asli menu: lihat assets/photos/README.txt
+Mode gelap/terang: tombol bulan/matahari di navbar (tersimpan otomatis).
