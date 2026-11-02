@@ -8,7 +8,7 @@
 .cart-items{flex:1;overflow:auto;padding:14px 22px}.cart-empty{text-align:center;color:#b09aa5;font-size:13px;padding:60px 10px;line-height:1.9}
 .cart-line{display:grid;grid-template-columns:58px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px dashed #f1d6e1}.cart-line img{width:58px;height:58px;border-radius:12px;object-fit:cover}.cart-line b{display:block;font-size:13px;color:var(--deep)}.cart-line small{font-size:11px;color:#a98c9a}.qty{display:flex;align-items:center;gap:8px}.qty button{width:26px;height:26px;border:0;border-radius:50%;background:#fde1ec;color:#b8587f;font-weight:700;cursor:pointer}.qty span{min-width:16px;text-align:center;font-size:12px;font-weight:700;color:var(--deep)}
 .cart-foot{padding:16px 22px 22px;border-top:1px solid #f6dce6;background:#fff}.cart-note{display:block;font-size:11px;font-weight:700;color:#a65f7d}.cart-note input{display:block;width:100%;margin-top:6px;padding:11px 13px;border:1px solid #f1d6e1;border-radius:12px;font:12px Nunito,sans-serif;color:var(--text);background:#fffaf7}.cart-total{display:flex;justify-content:space-between;align-items:center;margin:16px 0;font-size:13px;color:#927482}.cart-total b{font-size:20px;color:var(--deep);font-family:'Nunito',sans-serif}.cart-order{width:100%;justify-content:center;border:0;cursor:pointer;font-family:inherit}.cart-order:disabled{opacity:.5;cursor:not-allowed;transform:none}.cart-foot small{display:block;text-align:center;margin-top:10px;font-size:10px;color:#b49aa5}
-.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,30px);background:#75465d;color:#fff;padding:11px 18px;border-radius:24px;font-size:12px;z-index:70;opacity:0;pointer-events:none;transition:.3s}.toast.show{opacity:1;transform:translate(-50%,0)}@keyframes bump{50%{transform:scale(1.18)}}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,30px);background:#75465d;color:#fff;padding:11px 18px;border-radius:24px;font-size:12px;z-index:120;opacity:0;pointer-events:none;transition:.3s}.toast.show{opacity:1;transform:translate(-50%,0)}@keyframes bump{50%{transform:scale(1.18)}}
 @media(max-width:650px){.cart-fab{bottom:86px}}
 h1 em,h2 em{font-style:normal;font-weight:700}h1,h2,.cake-card h3,.cart-head h3,.cart-total b,.gallery-item figcaption b,.brand{font-weight:700}.brand-mark svg{display:block}.nav-tools{display:flex;align-items:center;gap:8px}.theme-toggle{width:40px;height:40px;border-radius:50%;border:1px solid #f4d6e2;background:#fff;cursor:pointer;font-size:17px;display:grid;place-items:center;transition:.25s}.theme-toggle:hover{transform:rotate(15deg) scale(1.08)}.ico-sun{display:none}html[data-theme=dark] .ico-sun{display:inline}html[data-theme=dark] .ico-moon{display:none}
 /* ===== DARK MODE ===== */
@@ -65,3 +65,68 @@ nav a{font-weight:700}.btn-primary,.btn-outline,.nav-order{font-weight:500;lette
 body.lock{overflow:hidden}
 @media(max-width:700px){.pv{grid-template-columns:1fr;width:92vw}.pv-body{padding:22px 20px 22px}.pv-body h3{font-size:24px}.pv-imgwrap img{max-height:46vh}}
 html[data-theme=dark] .pv{background:#241821}html[data-theme=dark] .pv-body p{color:#c3a8b6}html[data-theme=dark] .pv-price{color:#ffb9d2}html[data-theme=dark] .pv-imgwrap{background:#3a2430}html[data-theme=dark] .zoom-badge{background:#2a1c24dd;color:#ffc4d9}html[data-theme=dark] .cart-tools{color:#b79bab}html[data-theme=dark] .cart-tools button,html[data-theme=dark] .cart-tools button:disabled{background:#4a2c3b;color:#ffc4d9}html[data-theme=dark] .cart-del{color:#e9a3bf}
+
+/* ===== Pilih bahasa (ID / EN / JP) ===== */
+.lang-switch{display:flex;gap:2px;padding:3px;border:1px solid #f4d6e2;border-radius:22px;background:#fff}
+.lang-switch button{border:0;background:none;color:#a65f7d;font:600 11px 'Fredoka','Nunito',sans-serif;padding:6px 10px;border-radius:18px;cursor:pointer;transition:.2s}
+.lang-switch button:hover{background:#ffe8f0}
+.lang-switch button.active{background:#e995b3;color:#fff;box-shadow:0 4px 10px #e995b344}
+html[data-theme=dark] .lang-switch{background:#2a1c24;border-color:#47303d}
+html[data-theme=dark] .lang-switch button{color:#ffc4d9}
+html[data-theme=dark] .lang-switch button:hover{background:#3a2430}
+html[data-theme=dark] .lang-switch button.active{background:#e995b3;color:#fff}
+@media(max-width:650px){.brand{font-size:22px}.brand-mark{width:30px;height:30px;margin-right:5px}.nav-tools{gap:6px}.theme-toggle{width:36px;height:36px;font-size:15px}.lang-switch button{padding:5px 7px;font-size:10px}}
+/* Tampilan bahasa Jepang: font bulat imut + ukuran judul disesuaikan */
+html[lang=ja] *{font-family:'Zen Maru Gothic','Fredoka','Nunito',sans-serif}
+html[lang=ja] h1{font-size:clamp(38px,4.8vw,58px);line-height:1.3}
+html[lang=ja] h2{font-size:clamp(27px,3.2vw,40px);line-height:1.35}
+html[lang=ja] .hero-desc,html[lang=ja] .story-copy p,html[lang=ja] .order-card p{line-height:2.1}
+html[lang=ja] .cake-card p{line-height:1.9}
+
+/* ===== Pemutar musik + playlist ===== */
+.music-info{min-width:0;max-width:150px}
+.music-info b{font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.music-info small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.music-player .pl-btn{background:#fde1ec;color:#b8587f;font-size:17px;line-height:1;transition:background .25s,color .25s}
+.music-player .pl-btn:hover,.music-player .pl-btn[aria-expanded=true]{background:#e995b3;color:#fff}
+.music-player.is-playing .pl-btn{animation:noteBob 1.6s ease-in-out infinite}
+@keyframes noteBob{50%{transform:translateY(-3px) rotate(-10deg)}}
+.playlist{position:fixed;left:18px;bottom:82px;z-index:35;width:min(330px,calc(100vw - 36px));background:#fffaf7;border:1px solid #f4d6e2;border-radius:24px;box-shadow:0 18px 50px #7b3b5638;padding:16px 14px 14px;opacity:0;visibility:hidden;transform:translateY(12px) scale(.96);transform-origin:bottom left;transition:opacity .28s,transform .28s,visibility .28s}
+.playlist.open{opacity:1;visibility:visible;transform:none}
+.pl-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;padding:0 4px}
+.pl-head b{display:block;font:600 17px 'Fredoka',sans-serif;color:var(--deep)}
+.pl-head small{display:block;font-size:11px;color:#a88b98;margin-top:3px}
+.pl-x{width:30px;height:30px;border:0;border-radius:50%;background:#ffe8f0;color:#b8587f;cursor:pointer;font-size:12px}
+.pl-list{list-style:none;display:grid;gap:6px;margin:12px 0 14px}
+.pl-track{width:100%;display:grid;grid-template-columns:30px 1fr auto;align-items:center;gap:11px;padding:9px 10px;border:1px solid transparent;border-radius:16px;background:none;text-align:left;cursor:pointer;font-family:inherit;transition:.2s}
+.pl-track:hover{background:#ffe8f0}
+.pl-track.active{background:#ffe4ee;border-color:#f4c4d6}
+.pl-num{width:30px;height:30px;border-radius:50%;background:#fde1ec;color:#b8587f;display:grid;place-items:center;font:600 12px 'Fredoka',sans-serif}
+.pl-track.active .pl-num{background:#e995b3;color:#fff}
+.pl-meta{min-width:0}
+.pl-meta b{display:block;font:600 13px 'Fredoka',sans-serif;color:var(--deep);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pl-meta small{display:block;font-size:11px;color:#a88b98;margin-top:2px}
+.eq{display:none;align-items:flex-end;gap:2px;height:14px;margin-right:4px}
+.pl-track.playing .eq{display:flex}
+.eq i{width:3px;height:3px;border-radius:2px;background:#e995b3;animation:eq .9s ease-in-out infinite}
+.eq i:nth-child(2){animation-delay:.2s}.eq i:nth-child(3){animation-delay:.4s}
+@keyframes eq{0%,100%{height:3px}50%{height:14px}}
+.pl-seek{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:9px;padding:0 4px;font:700 10px 'Nunito',sans-serif;color:#a88b98;font-variant-numeric:tabular-nums}
+.pl-seek input{width:100%;accent-color:#e995b3;cursor:pointer}
+.pl-ctl{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:10px}
+.pl-ctl button{width:36px;height:36px;border:0;border-radius:50%;background:#fde1ec;color:#b8587f;cursor:pointer;display:grid;place-items:center;font-size:14px}
+.pl-ctl .pl-play{width:46px;height:46px;background:#e995b3;color:#fff;font-size:16px;box-shadow:0 8px 18px #e995b355}
+html[data-theme=dark] .playlist{background:#241821;border-color:#47303d}
+html[data-theme=dark] .pl-x,html[data-theme=dark] .pl-num,html[data-theme=dark] .pl-ctl button,html[data-theme=dark] .music-player .pl-btn{background:#4a2c3b;color:#ffc4d9}
+html[data-theme=dark] .pl-ctl .pl-play,html[data-theme=dark] .pl-track.active .pl-num{background:#e995b3;color:#fff}
+html[data-theme=dark] .music-player .pl-btn:hover,html[data-theme=dark] .music-player .pl-btn[aria-expanded=true]{background:#e995b3;color:#fff}
+html[data-theme=dark] .pl-track:hover{background:#3a2430}
+html[data-theme=dark] .pl-track.active{background:#3a2430;border-color:#5a3a4b}
+html[data-theme=dark] .pl-head small,html[data-theme=dark] .pl-meta small,html[data-theme=dark] .pl-seek{color:#b79bab}
+
+/* ===== Efek lucu saat tombol ditekan ===== */
+.jelly{animation:jelly .6s}
+@keyframes jelly{0%{transform:scale(1)}20%{transform:scale(.84,1.14)}40%{transform:scale(1.16,.86)}60%{transform:scale(.95,1.06)}80%{transform:scale(1.03,.98)}100%{transform:scale(1)}}
+.fx-particle{position:fixed;z-index:300;pointer-events:none;line-height:1;user-select:none;will-change:transform,opacity}
+.fx-fly{position:fixed;z-index:300;width:56px;height:56px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 10px 24px #e995b388;pointer-events:none;background:#ffe4ee}
+@media(prefers-reduced-motion:reduce){.jelly{animation:none}}
