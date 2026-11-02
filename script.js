@@ -85,9 +85,9 @@ function renderCart() {
   let count = 0, total = 0;
   $('cartItems').innerHTML = names.length ? names.map(n => {
     const m = menuData[n], q = cart[n]; count += q; total += q * m.price;
-    return `<div class="cart-line"><img src="${m.img}" alt=""><div><b>${m.name}</b><small>${rupiah(m.price)} × ${q}</small></div><div class="qty"><button data-act="dec" data-name="${m.name}" aria-label="Kurangi">−</button><span>${q}</span><button data-act="inc" data-name="${m.name}" aria-label="Tambah">+</button></div></div>`;
+    return `<div class="cart-line"><img src="${m.img}" alt=""><div><b>${m.name}</b><small>${rupiah(m.price)} × ${q}</small></div><div class="cart-ctl"><div class="qty"><button data-act="dec" data-name="${m.name}" aria-label="Kurangi">−</button><span>${q}</span><button data-act="inc" data-name="${m.name}" aria-label="Tambah">+</button></div><button class="cart-del" data-act="del" data-name="${m.name}">Hapus</button></div></div>`;
   }).join('') : '<div class="cart-empty">Keranjangmu masih kosong ♡<br>Pilih kue favoritmu dari menu ya!</div>';
-  $('cartCount').textContent = count; $('cartTotal').textContent = rupiah(total); $('cartOrder').disabled = !names.length;
+  $('cartCount').textContent = count; $('cartSummary').textContent = count + ' item'; $('cartClear').disabled = !names.length; $('cartTotal').textContent = rupiah(total); $('cartOrder').disabled = !names.length;
   saveCart();
 }
 function addToCart(name) {
@@ -97,14 +97,15 @@ function addToCart(name) {
 document.querySelectorAll('#cakeGrid .cake-card').forEach(card => {
   const name = card.querySelector('h3').textContent;
   card.querySelector('.add-btn').addEventListener('click', e => { e.stopPropagation(); addToCart(name); });
-  card.style.cursor = 'pointer';
-  card.addEventListener('click', () => addToCart(name)); // klik kartu menu = tambah ke pesanan
 });
 $('cartItems').addEventListener('click', e => {
   const b = e.target.closest('button[data-act]'); if (!b) return;
-  const n = b.dataset.name; cart[n] = Math.max(0, (cart[n] || 0) + (b.dataset.act === 'inc' ? 1 : -1));
+  const n = b.dataset.name;
+  if (b.dataset.act === 'del') { delete cart[n]; renderCart(); return; }
+  cart[n] = Math.max(0, (cart[n] || 0) + (b.dataset.act === 'inc' ? 1 : -1));
   if (!cart[n]) delete cart[n]; renderCart();
 });
+$('cartClear').addEventListener('click', () => { if (confirm('Hapus semua pesanan di keranjang?')) { cart = {}; renderCart(); toast('Keranjang dikosongkan'); } });
 $('cartFab').addEventListener('click', () => openCart(true));
 $('cartClose').addEventListener('click', () => openCart(false));
 $('cartOverlay').addEventListener('click', () => openCart(false));
@@ -133,4 +134,36 @@ document.querySelectorAll('#cakeGrid .cake-card').forEach(card => {
     probe.onerror = () => tryNext(i + 1);
     probe.src = src;
   })(0);
+});
+
+// ===== Preview foto + deskripsi menu =====
+const pv = $('pv'), pvOverlay = $('pvOverlay');
+let pvIndex = 0;
+const visibleCards = () => [...document.querySelectorAll('#cakeGrid .cake-card')].filter(c => !c.hidden);
+function showPreview(card) {
+  const name = card.querySelector('h3').textContent, tag = card.querySelector('.tag');
+  $('pvImg').src = card.querySelector('.cake-img img').getAttribute('src'); $('pvImg').alt = name;
+  $('pvName').textContent = name; $('pvDesc').textContent = card.dataset.desc || card.querySelector('p').textContent;
+  $('pvPrice').textContent = rupiah(+card.dataset.price);
+  $('pvTag').textContent = tag.textContent; $('pvTag').className = tag.className;
+  $('pvAdd').dataset.name = name;
+}
+function openPreview(card) {
+  pvIndex = visibleCards().indexOf(card); showPreview(card);
+  pv.classList.add('open'); pvOverlay.classList.add('show'); pv.setAttribute('aria-hidden', 'false'); document.body.classList.add('lock');
+  $('pvClose').focus();
+}
+function closePreview() { pv.classList.remove('open'); pvOverlay.classList.remove('show'); pv.setAttribute('aria-hidden', 'true'); document.body.classList.remove('lock'); }
+function stepPreview(d) { const v = visibleCards(); if (!v.length) return; pvIndex = (pvIndex + d + v.length) % v.length; showPreview(v[pvIndex]); }
+document.querySelectorAll('#cakeGrid .cake-card').forEach(card => {
+  const trigger = card.querySelector('.cake-img');
+  trigger.addEventListener('click', () => openPreview(card));
+  trigger.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPreview(card); } });
+});
+$('pvClose').addEventListener('click', closePreview); pvOverlay.addEventListener('click', closePreview);
+$('pvPrev').addEventListener('click', () => stepPreview(-1)); $('pvNext').addEventListener('click', () => stepPreview(1));
+$('pvAdd').addEventListener('click', e => addToCart(e.currentTarget.dataset.name));
+document.addEventListener('keydown', e => {
+  if (!pv.classList.contains('open')) return;
+  if (e.key === 'Escape') closePreview(); if (e.key === 'ArrowLeft') stepPreview(-1); if (e.key === 'ArrowRight') stepPreview(1);
 });
