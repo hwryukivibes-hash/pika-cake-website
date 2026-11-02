@@ -17,7 +17,7 @@
     <a class="brand" href="#home"><span class="brand-mark">♡</span> pika cake<span class="brand-dot">.</span></a>
     <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">☰</button>
     <nav id="navLinks">
-      <a href="#home">Home</a><a href="#menu">Our cakes</a><a href="#story">Our story</a><a href="#gallery">Gallery</a>
+      <a href="#home">Home</a><a href="#menu">Our cakes</a><a href="#story">Our story</a><a href="#about">About Pika</a>
       <a class="nav-order" href="#order">Order ♡</a>
     </nav>
   </header>
@@ -43,43 +43,74 @@
 
     <section class="menu-section section-wrap" id="menu">
       <div class="section-heading"><span class="eyebrow">our sweet collection</span><h2>A treat for every <em>mood.</em></h2><p>Temukan teman terbaik untuk hari manismu.</p></div>
-      <div class="cake-grid">
-        <article class="cake-card tilt-card"><div class="cake-emoji">🍓</div><span class="tag">BEST SELLER</span><h3>Ichigo Shortcake</h3><p>Sponge cake lembut dengan fresh cream dan stroberi.</p><div class="cake-bottom"><b>Strawberry love</b><span>♡</span></div></article>
-        <article class="cake-card tilt-card"><div class="cake-emoji">🍵</div><span class="tag tag-green">JAPANESE FAVE</span><h3>Matcha Cloud</h3><p>Perpaduan matcha lembut dan cream yang dreamy.</p><div class="cake-bottom"><b>Matcha mood</b><span>♡</span></div></article>
-        <article class="cake-card tilt-card"><div class="cake-emoji">🍫</div><span class="tag tag-brown">CHOCO SERIES</span><h3>Choco Pudding</h3><p>Cokelat rich dengan tekstur silky yang memanjakan.</p><div class="cake-bottom"><b>Choco hug</b><span>♡</span></div></article>
-        <article class="cake-card tilt-card"><div class="cake-emoji">🧁</div><span class="tag tag-lilac">TINY & CUTE</span><h3>Mini Cupcake</h3><p>Ukuran mungil, topping lucu, cocok buat sharing.</p><div class="cake-bottom"><b>Little cutie</b><span>♡</span></div></article>
+      <div class="menu-filters" id="menuFilters" role="tablist" aria-label="Kategori menu">
+        <button class="active" data-filter="all">All ♡</button><button data-filter="cake">Cakes 🍰</button><button data-filter="pastry">Pastry 🧁</button><button data-filter="dessert">Dessert 🍮</button><button data-filter="drink">Drinks 🥤</button>
       </div>
-      <p class="menu-disclaimer">*Menu di atas adalah contoh tampilan. Silakan ganti nama, deskripsi, dan harga sesuai menu toko.</p>
+      <div class="cake-grid" id="cakeGrid">
+        <article class="cake-card tilt-card" data-price="28000" data-cat="cake"><div class="cake-img"><img src="assets/menu/ichigo-shortcake.svg" alt="Ilustrasi Ichigo Shortcake" loading="lazy"></div><span class="tag ">BEST SELLER</span><h3>Ichigo Shortcake</h3><p>Sponge cake lembut dengan fresh cream dan stroberi segar.</p><div class="cake-bottom"><b>Rp 28.000</b><button class="add-btn" type="button" aria-label="Tambah ke keranjang">+ Tambah</button></div></article>
+        <article class="cake-card tilt-card" data-price="30000" data-cat="cake"><div class="cake-img"><img src="assets/menu/matcha-cloud.svg" alt="Ilustrasi Matcha Cloud" loading="lazy"></div><span class="tag tag-green">JAPANESE FAVE</span><h3>Matcha Cloud</h3><p>Matcha lembut berlapis cream yang dreamy.</p><div class="cake-bottom"><b>Rp 30.000</b><button class="add-btn" type="button" aria-label="Tambah ke keranjang">+ Tambah</button></div></article>
+        <article class="cake-card tilt-card" data-price="32000" data-cat="cake"><div class="cake-img"><img src="assets/menu/red-velvet.svg" alt="Ilustrasi Red Velvet Bunny" loading="lazy"></div><span class="tag ">NEW</span><h3>Red Velvet Bunny</h3><p>Red velvet moist dengan cream cheese frosting.</p><div class="cake-bottom"><b>Rp 32.000</b><button class="add-btn" type="button" aria-label="Tambah ke keranjang">+ Tambah</button></div></article>
+        <article class="cake-card tilt-card" data-price="26000" data-cat="cake"><div class="cake-img"><img src="assets/menu/vanilla-cloud.svg" alt="Ilustrasi Vanilla Cloud" loading="lazy"></div><span class="tag tag-cream">CLASSIC</span><h3>Vanilla Cloud</h3><p>Sponge vanilla ringan dengan whipped cream dan hiasan pastel.</p><div class="cake-bottom"><b>Rp 26.000</b><button class="add-btn" type="button" aria-label="Tambah ke keranjang">+ Tambah</button></div></article>
+        <article class="cake-card tilt-card" data-price="34000" data-cat="cake"><div class="cake-img"><img src="assets/menu/choco-lava.svg" alt="Ilustrasi Choco Lava Cake" loading="lazy"></div><span class="tag tag-brown">CHOCO SERIES</span><h3>Choco Lava Cake</h3><p>Cokelat pekat dengan drip ganache yang meleleh.</p><div class="cake-bottom"><b>Rp 34.000</b><button class="add-btn" type="button" aria-label="Tambah ke keranjang">+ Tambah</button></div></article>
+        <article class="cake-card tilt-card" data-price="35000" data-cat="cake"><div class="cake-img"><img src="assets/menu/blueberry-cheesecake.svg" alt="Ilustrasi Blueberry Cheesecake" loading="lazy"></div><span class="tag tag-lilac">FRUITY</span><h3>Blueberry Cheesecake</h3><p>Cheesecake creamy dengan saus blueberry manis asam.</p><div class="cake-bottom"><b>Rp 35.000</b><button class="add-btn" type="button" aria-label="Tambah ke keranjang">+ Tambah</button></div></article>
+        <article class="cake-card tilt-card" data-price="27000" data-cat="cake"><div class="cake-img"><img src="assets/menu/strawberry-roll.svg" alt="Ilustrasi Strawberry Roll" loading="lazy"></div><span class="tag ">FRESH</span><h3>Strawberry Roll</h3><p>Roll cake lembut berisi cream dan potongan stroberi.</p><div class="cake-bottom"><b>Rp 27.000</b><button class="add-btn" type="button" aria-label="Tambah ke keranjang">+ Tambah</button></div></article>
+        <article class="cake-card tilt-card" data-price="12000" data-cat="pastry"><div class="cake-img"><img src="assets/menu/mini-cupcake.svg" alt="Ilustrasi Mini Cupcake" loading="lazy"></div><span class="tag tag-lilac">TINY & CUTE</span><h3>Mini Cupcake</h3><p>Ukuran mungil, topping lucu, cocok buat sharing.</p><div class="cake-bottom"><b>Rp 12.000</b><button class="add-btn" type="button" aria-label="Tambah ke keranjang">+ Tambah</button></div></article>
+        <article class="cake-card tilt-card" data-price="15000" data-cat="pastry"><div class="cake-img"><img src="assets/menu/choco-donut.svg" alt="Ilustrasi Choco Donut" loading="lazy"></div><span class="tag tag-brown">CHOCO SERIES</span><h3>Choco Donut</h3><p>Donat empuk dengan glaze cokelat dan sprinkle.</p><div class="cake-bottom"><b>Rp 15.000</b><button class="add-btn" type="button" aria-label="Tambah ke keranjang">+ Tambah</button></div></article>
+        <article class="cake-card tilt-card" data-price="15000" data-cat="pastry"><div class="cake-img"><img src="assets/menu/pink-donut.svg" alt="Ilustrasi Strawberry Donut" loading="lazy"></div><span class="tag ">CUTE PICK</span><h3>Strawberry Donut</h3><p>Donat dengan glaze stroberi pink dan sprinkle warna-warni.</p><div class="cake-bottom"><b>Rp 15.000</b><button class="add-btn" type="button" aria-label="Tambah ke keranjang">+ Tambah</button></div></article>
+        <article class="cake-card tilt-card" data-price="18000" data-cat="pastry"><div class="cake-img"><img src="assets/menu/cheese-tart.svg" alt="Ilustrasi Cheese Tart" loading="lazy"></div><span class="tag tag-cream">BAKED</span><h3>Cheese Tart</h3><p>Tart renyah dengan filling keju lumer ala Jepang.</p><div class="cake-bottom"><b>Rp 18.000</b><button class="add-btn" type="button" aria-label="Tambah ke keranjang">+ Tambah</button></div></article>
+        <article class="cake-card tilt-card" data-price="22000" data-cat="pastry"><div class="cake-img"><img src="assets/menu/fruit-tart.svg" alt="Ilustrasi Fruit Tart" loading="lazy"></div><span class="tag ">FRUITY</span><h3>Fruit Tart</h3><p>Tart custard dengan topping buah segar.</p><div class="cake-bottom"><b>Rp 22.000</b><button class="add-btn" type="button" aria-label="Tambah ke keranjang">+ Tambah</button></div></article>
+        <article class="cake-card tilt-card" data-price="16000" data-cat="dessert"><div class="cake-img"><img src="assets/menu/choco-pudding.svg" alt="Ilustrasi Choco Pudding" loading="lazy"></div><span class="tag tag-brown">SILKY</span><h3>Choco Pudding</h3><p>Pudding cokelat rich dengan tekstur silky.</p><div class="cake-bottom"><b>Rp 16.000</b><button class="add-btn" type="button" aria-label="Tambah ke keranjang">+ Tambah</button></div></article>
+        <article class="cake-card tilt-card" data-price="16000" data-cat="dessert"><div class="cake-img"><img src="assets/menu/caramel-pudding.svg" alt="Ilustrasi Purin Caramel" loading="lazy"></div><span class="tag tag-green">JAPANESE FAVE</span><h3>Purin Caramel</h3><p>Purin klasik Jepang dengan saus karamel hangat.</p><div class="cake-bottom"><b>Rp 16.000</b><button class="add-btn" type="button" aria-label="Tambah ke keranjang">+ Tambah</button></div></article>
+        <article class="cake-card tilt-card" data-price="24000" data-cat="dessert"><div class="cake-img"><img src="assets/menu/tiramisu-cup.svg" alt="Ilustrasi Tiramisu Cup" loading="lazy"></div><span class="tag tag-brown">COFFEE LOVER</span><h3>Tiramisu Cup</h3><p>Lapisan kopi, mascarpone, dan cokelat bubuk dalam gelas.</p><div class="cake-bottom"><b>Rp 24.000</b><button class="add-btn" type="button" aria-label="Tambah ke keranjang">+ Tambah</button></div></article>
+        <article class="cake-card tilt-card" data-price="25000" data-cat="dessert"><div class="cake-img"><img src="assets/menu/rose-parfait.svg" alt="Ilustrasi Strawberry Parfait" loading="lazy"></div><span class="tag ">PINK DREAM</span><h3>Strawberry Parfait</h3><p>Parfait stroberi berlapis cream dan sponge.</p><div class="cake-bottom"><b>Rp 25.000</b><button class="add-btn" type="button" aria-label="Tambah ke keranjang">+ Tambah</button></div></article>
+        <article class="cake-card tilt-card" data-price="20000" data-cat="dessert"><div class="cake-img"><img src="assets/menu/sakura-mochi.svg" alt="Ilustrasi Sakura Mochi" loading="lazy"></div><span class="tag tag-green">JAPANESE FAVE</span><h3>Sakura Mochi</h3><p>Mochi kenyal tiga rasa dengan isian cream manis.</p><div class="cake-bottom"><b>Rp 20.000</b><button class="add-btn" type="button" aria-label="Tambah ke keranjang">+ Tambah</button></div></article>
+        <article class="cake-card tilt-card" data-price="14000" data-cat="dessert"><div class="cake-img"><img src="assets/menu/dango-trio.svg" alt="Ilustrasi Hanami Dango" loading="lazy"></div><span class="tag ">SEASONAL</span><h3>Hanami Dango</h3><p>Tiga bola dango kenyal ala festival hanami.</p><div class="cake-bottom"><b>Rp 14.000</b><button class="add-btn" type="button" aria-label="Tambah ke keranjang">+ Tambah</button></div></article>
+        <article class="cake-card tilt-card" data-price="18000" data-cat="drink"><div class="cake-img"><img src="assets/menu/strawberry-milk.svg" alt="Ilustrasi Strawberry Milk" loading="lazy"></div><span class="tag ">REFRESHING</span><h3>Strawberry Milk</h3><p>Susu stroberi dingin dengan whipped cream.</p><div class="cake-bottom"><b>Rp 18.000</b><button class="add-btn" type="button" aria-label="Tambah ke keranjang">+ Tambah</button></div></article>
+        <article class="cake-card tilt-card" data-price="22000" data-cat="drink"><div class="cake-img"><img src="assets/menu/matcha-latte.svg" alt="Ilustrasi Iced Matcha Latte" loading="lazy"></div><span class="tag tag-green">JAPANESE FAVE</span><h3>Iced Matcha Latte</h3><p>Matcha premium dengan susu segar dan es.</p><div class="cake-bottom"><b>Rp 22.000</b><button class="add-btn" type="button" aria-label="Tambah ke keranjang">+ Tambah</button></div></article>
+      </div>
+      <p class="menu-disclaimer">*Menu, harga, dan ilustrasi adalah contoh tampilan. Silakan ganti nama, deskripsi, dan harga sesuai menu toko.</p>
     </section>
 
     <section class="story-section" id="story">
       <div class="section-wrap story-layout">
         <div class="story-photo tilt-card"><img src="assets/waguri-inspired.jpg" alt="Ilustrasi karakter anime perempuan berambut gelap tersenyum"><span class="photo-caption">a little anime corner ✧</span></div>
-        <div class="story-copy"><span class="eyebrow">いらっしゃいませ · welcome</span><h2>Sweetness with a<br><em>Japanese touch.</em></h2><p>Pika Cake terinspirasi dari suasana toko kue Jepang yang hangat, pastel, dan penuh detail menggemaskan. Kami percaya hal sederhana seperti sepotong cake bisa bikin hari terasa lebih baik.</p><p class="japanese-line">おいしい幸せを、あなたに。♡</p><a class="btn-outline" href="#gallery">See our little world ↗</a></div>
+        <div class="story-copy"><span class="eyebrow">いらっしゃいませ · welcome</span><h2>Sweetness with a<br><em>Japanese touch.</em></h2><p>Pika Cake terinspirasi dari suasana toko kue Jepang yang hangat, pastel, dan penuh detail menggemaskan. Kami percaya hal sederhana seperti sepotong cake bisa bikin hari terasa lebih baik.</p><p class="japanese-line">おいしい幸せを、あなたに。♡</p><a class="btn-outline" href="#about">Meet Pika ↗</a></div>
       </div>
     </section>
 
-    <section class="gallery-section section-wrap" id="gallery">
-      <div class="section-heading"><span class="eyebrow">our little memories</span><h2>Meet the <em>Pika vibes.</em></h2><p>Sudut manis Pika Cake dan foto-foto yang jadi bagian dari ceritanya.</p></div>
-      <div class="gallery-grid">
-        <figure class="gallery-item shop-gallery"><img src="assets/cake-shop.jpg" alt="Foto interior toko kue pink"><figcaption><b>Our dreamy cake shop</b><span>♡ the place for sweet moments</span></figcaption></figure>
-        <figure class="gallery-item anime-gallery"><img src="assets/waguri-inspired.jpg" alt="Ilustrasi anime perempuan"><figcaption><b>Waguri's anime corner</b><span>✧ cute inspiration</span></figcaption></figure>
-        <figure class="gallery-item pika-gallery"><img src="assets/pika-photos.jpg" alt="Kolase tiga foto Pika"><figcaption><b>Pika's photo diary</b><span>♡ little moments, big smiles</span></figcaption></figure>
+
+    <section class="story-section about-section" id="about">
+      <div class="section-wrap story-layout story-reverse">
+        <div class="story-copy"><span class="eyebrow">hello · nice to meet you</span><h2>Meet <em>Pika,</em><br>the heart of the shop.</h2><p>Di balik setiap kue ada tangan yang membuatnya dengan sabar dan penuh cinta. Pika percaya bahwa kue yang dibuat dengan hati akan terasa lebih manis di setiap gigitan.</p><p class="japanese-line">ようこそ、ピカケーキへ。♡</p><a class="btn-outline" href="#order">Order a cake ↗</a></div>
+        <div class="story-photo about-photo tilt-card"><img src="assets/pika-portrait.jpg" alt="Foto Pika"><span class="photo-caption">pika's little corner ✧</span></div>
       </div>
-      <p class="menu-disclaimer">Foto ditampilkan terpisah sesuai kategori. Pastikan kamu punya izin untuk menggunakan foto pribadi yang diunggah.</p>
     </section>
 
-    <section class="order-section" id="order"><div class="order-card"><span class="eyebrow">let's make it sweeter</span><h2>Your happy moment<br>starts with <em>a cake.</em></h2><p>Punya acara spesial atau sekadar ingin ngemil manis? Hubungi kami untuk tanya menu dan pemesanan.</p><a class="btn-primary" href="https://wa.me/" target="_blank" rel="noopener">Chat to order <span>↗</span></a><small>Ganti link WhatsApp di index.html dengan nomor tokomu.</small></div></section>
+    <section class="order-section" id="order"><div class="order-card"><span class="eyebrow">let's make it sweeter</span><h2>Your happy moment<br>starts with <em>a cake.</em></h2><p>Punya acara spesial atau sekadar ingin ngemil manis? Hubungi kami untuk tanya menu dan pemesanan.</p><a class="btn-primary" href="https://wa.me/6282381028439?text=Halo%20Pika%20Cake%2C%20aku%20mau%20pesan%20kue%20%E2%99%A1" target="_blank" rel="noopener">Chat to order <span>↗</span></a><small class="order-phone">WhatsApp / telepon: <a href="tel:+6282381028439">+62 823-8102-8439</a></small></div></section>
   </main>
 
-  <footer><a class="brand" href="#home"><span class="brand-mark">♡</span> pika cake<span class="brand-dot">.</span></a><p>小さなケーキ、大きな幸せ。 Made with ♡</p><span>© <span id="year"></span> Pika Cake</span></footer>
+  <footer><a class="brand" href="#home"><span class="brand-mark">♡</span> pika cake<span class="brand-dot">.</span></a><p>小さなケーキ、大きな幸せ。 Made with ♡</p><span><a href="tel:+6282381028439">+62 823-8102-8439</a> · © <span id="year"></span> Pika Cake</span></footer>
 
   <div class="music-player" id="musicPlayer">
     <button id="musicToggle" aria-label="Putar musik" title="Putar / jeda musik"><span id="musicIcon">▶</span></button>
-    <div class="music-info"><b>Glue Song</b><small>background music · beabadoobee</small></div>
+    <div class="music-info"><b>Kita Lewati Berdua</b><small>background music · Overnight</small></div>
     <span class="music-note">♫</span>
   </div>
-  <audio id="bgMusic" src="assets/glue-song.mp3" loop preload="auto"></audio>
+
+  <button class="cart-fab" id="cartFab" aria-label="Buka keranjang">🛍️<span class="cart-count" id="cartCount">0</span></button>
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Keranjang pesanan" aria-hidden="true">
+    <div class="cart-head"><h3>Pesananmu ♡</h3><button id="cartClose" aria-label="Tutup keranjang">✕</button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-foot">
+      <label class="cart-note">Catatan (opsional)<input id="cartNote" type="text" placeholder="mis. tulisan di kue, tanggal ambil"></label>
+      <div class="cart-total"><span>Total</span><b id="cartTotal">Rp 0</b></div>
+      <button class="btn-primary cart-order" id="cartOrder" type="button">Pesan via WhatsApp <span>↗</span></button>
+      <small>Pesanan dikirim lewat WhatsApp ke +62 823-8102-8439</small>
+    </div>
+  </aside>
+  <div class="toast" id="toast"></div>
+  <audio id="bgMusic" src="assets/kita-lewati-berdua.mp3" loop preload="auto"></audio>
   <div class="music-hint" id="musicHint">Tap ♡ untuk memutar musik</div>
   <script src="script.js"></script>
 </body>
